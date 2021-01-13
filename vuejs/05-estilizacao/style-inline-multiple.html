@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estilização: Inline Multiple</title>
+</head>
+<body>
+
+    <!--AULA 02-->
+
+    <div id="estilizacao">
+        <div :style="{ display: displayStyle }">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia maiores repudiandae, esse veritatis perspiciatis voluptates commodi minus, doloremque porro ab libero exercitationem ipsa, doloribus magni asperiores error dolorem incidunt iusto.</div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>   
+    <script>
+        
+        let app = new Vue({
+            el: '#estilizacao',
+            data:{
+               displayStyle: ['-webkit-box', '-moz-box-flex', '-ms-flexbox']
+            },
+        })
+    </script>
+
+</body>
+</html>

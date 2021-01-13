@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estilização: Inline</title>
+</head>
+<body>
+
+    <!--AULA 01-->
+
+    <div id="estilizacao">
+        <input type="number" placeholder="Digite o tamanho da fonte" v-model="fontSizeProp">
+      <h2 :style="{ fontSize: fontSizeProp + 'px' }">Evan You</h2>
+
+      <hr>
+
+      <h2>Digite o valor de cada cor nos campos abaixo</h2>
+      <input type="number" max="255" min="0" placeholder="Vermelho" v-model="styleRed">
+      <input type="number" max="255" min="0" placeholder="Verde" v-model="styleGreen">
+      <input type="number" max="255" min="0" placeholder="Blue" v-model="styleBlue">
+
+      <div :style="styleRgb">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia maiores repudiandae, esse veritatis perspiciatis voluptates commodi minus, doloremque porro ab libero exercitationem ipsa, doloribus magni asperiores error dolorem incidunt iusto.</div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>   
+    <script>
+        
+        let app = new Vue({
+            el: '#estilizacao',
+            data:{
+               fontSizeProp: 20, 
+               styleRed: 255,
+               styleGreen: 105,
+               styleBlue: 80,
+
+            },
+
+            computed:{
+                styleRgb(){
+                    return {
+                        color: `rgb(${this.styleRed}, ${this.styleGreen}, ${this.styleBlue})`
+                    };
+                }
+            }
+        })
+    </script>
+
+</body>
+</html>

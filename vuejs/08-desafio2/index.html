@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Página de Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link
+      rel="stylesheet"
+      href="./assets/plugins/fontawesome-free/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="./assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="./assets/dist/css/adminlte.min.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+
+    <style>
+      .links {
+        margin-top: 50px;
+      }
+      .link,
+      .link:hover {
+        color: #f37520;
+      }
+
+      .fade-transition-enter-active,
+      .fade-transition-leave-active {
+        transition: opacity 0.5s ease-in-out;
+      }
+      .fade-transition-enter,
+      .fade-transition-leave-to {
+        opacity: 0;
+      }
+
+    </style>
+  </head>
+  <body class="hold-transition login-page">
+    <div id="app">
+      <div class="login-box">
+        <div class="login-logo">
+          <a href="#">
+            <b>Hcode Treinamentos</b>
+            <img
+              src="./assets/img/logo.svg"
+              alt="Hcode Treinamentos"
+              style="width: 200px"
+            />
+          </a>
+        </div>
+
+        <div class="card">
+          <div class="card-body login-card-body">
+            <transition name="fade-transition">
+              <div v-show="isLogged" class="alert alert-success" role="alert">
+                Seja bem-vindo! :)
+              </div>
+            </transition>
+            <transition name="fade-transition" mode="out-in">
+              <div v-if="alreadyRegistered === true" key="signin" class="signin" style="padding: .5rem;">
+                <p class="login-box-msg">Fazer Login</p>
+
+                <form method="post" style="margin-bottom: 20px;">
+                  <div class="input-group mb-3">
+                    <input
+                      type="email"
+                      class="form-control"
+                      placeholder="Digite seu email"
+                      v-model="email"
+                    />
+                    <div class="input-group-append">
+                      <div class="input-group-text">
+                        <span class="fas fa-envelope"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="input-group mb-3">
+                    <input
+                      type="password"
+                      class="form-control"
+                      placeholder="Digite sua senha"
+                      v-model="password"
+                    />
+                    <div class="input-group-append">
+                      <div class="input-group-text">
+                        <span class="fas fa-lock"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-8">
+                      <div class="icheck-primary">
+                        <input type="checkbox" id="remember" />
+                        <label for="remember"> Lembrar de mim </label>
+                      </div>
+                    </div>
+    
+                    <div class="col-4">
+                      <button v-if="email == '' || password == ''" v-on:click.prevent="" type="submit" class="btn btn-primary btn-block disabled">Login</button>
+                      <button v-else="" v-on:click.prevent="logIn" type="submit" class="btn btn-primary btn-block">Login</button>
+                    </div>
+                  </div>
+                </form>
+
+                <a v-on:click="changeCard" href="#" class="link login-box-msg" style="margin:0 3%;">Ainda não possuo uma conta!</a>
+
+              </div>
+
+              <div v-else="" key="signup" class="signup" style="padding: .5rem;">
+
+                <p class="login-box-msg">Se cadastrar</p>
+
+                <form action="#" method="post" style="margin-bottom: 20px;">
+                  
+                  <div class="input-group mb-3">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Digite seu nome"
+                      v-model="name"
+                    />
+                    <div class="input-group-append">
+                      <div class="input-group-text">
+                        <span class="fas fa-user"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="input-group mb-3">
+                    <input
+                      type="email"
+                      class="form-control"
+                      placeholder="Digite seu email"
+                      v-model="email"
+                    />
+                    <div class="input-group-append">
+                      <div class="input-group-text">
+                        <span class="fas fa-envelope"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="input-group mb-3">
+                    <input
+                      type="password"
+                      class="form-control"
+                      placeholder="Digite sua senha"
+                      v-model="password"
+                    />
+                    <div class="input-group-append">
+                      <div class="input-group-text">
+                        <span class="fas fa-lock"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="input-group mb-3">
+                    <input
+                      type="password"
+                      class="form-control"
+                      placeholder="Confirme sua senha"
+                      v-model="confirmedPassword"
+                    />
+                    <div class="input-group-append">
+                      <div class="input-group-text">
+                        <span class="fas fa-lock"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <span class="link" v-if="password !== confirmedPassword">Suas senhas não coincidem!</span>
+                  <span v-else=""></span>
+                  <div class="row">
+                    <div class="col-8">
+                      <div class="icheck-primary">
+                        <input
+                          type="checkbox"
+                          id="agreeTerms"
+                          name="terms"
+                          value="agree"
+                          v-model="termsPressed"
+                        />
+                        <label for="agreeTerms">Eu concordo com os <a href="#">termos</a></label>
+                      </div>
+                    </div>
+    
+                    <div class="col-4">
+                      <button v-if="name == '' || email == '' || password == '' || confirmedPassword == '' || termsPressed == false" v-on:click.prevent="" type="submit" class="btn btn-primary btn-block disabled">Cadastrar</button>
+                      <button v-else="" v-on:click.prevent="logIn" type="submit" class="btn btn-primary btn-block">Cadastrar</button>
+                    </div>
+                  </div>
+
+                </form>
+
+                <a v-on:click="changeCard" href="#" class="link login-box-msg" style="margin: 0 10%;">Já possuo uma conta!</a>
+              </div>
+            </transition>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script src="./assets/plugins/jquery/jquery.min.js"></script>
+    <script src="./assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="./assets/dist/js/adminlte.min.js"></script>
+    <script>
+      let app = new Vue({
+        el: '#app',
+        data:{
+          alreadyRegistered: true,
+          isLogged:false,
+          termsPressed: false,
+          name: '',
+          email: '',
+          password: '',
+          confirmedPassword: '',
+        },
+        methods: {
+          changeCard(){
+            this.alreadyRegistered = !this.alreadyRegistered
+            this.isLogged = false
+          },
+          logIn(){
+            this.isLogged = true
+          }
+        },
+      });
+    </script>
+  </body>
+</html>

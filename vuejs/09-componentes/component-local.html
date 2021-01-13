@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Componentes: Local</title>
+  </head>
+  <body>
+    <!--AULA 02-->
+
+    <div id="components">
+      <div class="container">
+        <text-render text="Olá Mundo"></text-render>
+
+
+        <hr>
+
+        <list></list>
+
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <script>
+      Vue.component('text-render',{
+        props:['text'],
+        template:`
+          <div>
+            <h4>{{ text }}</h4>
+          </div>
+        `
+      });
+
+      let listItemComponent ={
+        props:['name'] ,
+        template: `<li>{{ name }}</li>`
+      }
+
+      let listComponent = {
+        template:`
+          <ul>
+            <list-item v-for="person in names" v-bind:name="person"></list-item>
+          </ul>
+        `,
+        data: function(){
+          return{
+            names:['João Rangel', 'Djalma Sindeaux', 'Gláucio Daniel']
+          }
+        },
+        components: {
+          listItem: listItemComponent
+        }
+      }
+
+      let app = new Vue({
+        el: "#components",
+        data: {
+          
+        },
+        components:{
+          list: listComponent
+        },
+        methods: {
+          
+        },
+      });
+    </script>
+  </body>
+</html>

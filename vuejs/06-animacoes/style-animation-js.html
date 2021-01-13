@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animações: Animação Personalizada JS</title>
+    <link rel="stylesheet" href="./node_modules/animate.css/animate.min.css" />
+    <style></style>
+  </head>
+  <body>
+    <!--AULA 04-->
+
+    <div id="animacoes">
+      <transition
+        name="animation-first"
+
+        @before-enter="beforeEnter"
+        @enter="enter"
+        @after-enter="afterEnter"
+        @enter-cancelled="enterCancelled" 
+        
+        @before-leave="beforeLeave"
+        @leave="leave"
+        @after-leave="afterLeave"
+        @leave-cancelled="leaveCancelled"
+      >
+        <h2 v-if="show">Hcode Treinamentos Animações</h2>
+      </transition>
+
+      <button @click="show = !show">Cliquei aqui</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <script>
+      let app = new Vue({
+        el: "#animacoes",
+        data: {
+          show: true,
+        },
+        methods: {
+          beforeEnter() {
+            console.log("beforeEnter");
+          },
+          enter() {
+            console.log("enter");
+          },
+          afterEnter(element) {
+            console.log("afterEnter", element);
+            document.querySelector("h2").style.backgroundColor = "#ccc";
+            document.querySelector("h2").style.color = "red";
+          },
+          enterCancelled() {
+            console.log("enterCancelled");
+          },
+          beforeLeave() {
+            console.log("beforeLeave");
+          },
+          leave() {
+            console.log("leave");
+            alert(" O elemento foi Oculto");
+          },
+          afterLeave() {
+            console.log("afterLeave");
+          },
+          leaveCancelled() {
+            console.log("leaveCancelled");
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

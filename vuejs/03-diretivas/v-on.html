@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diretivas: v-on</title>
+</head>
+<body>
+
+    <!--AULA 10-->
+
+    <div id="directives">
+        <!--<p v-on:click="reverseMessage">{{ message }}</p>-->
+        <p @click="reverseMessage">{{ message }}</p>
+        <h4 @[eventname]="reverseMessage">{{ message }}</h4>
+
+        <hr>
+
+        <input type="text" placeholder="Filtrar pessoas" @keyup="filterPersons">
+        <ul>
+            <li v-for="person in personsFiltred">{{ person }}</li>
+        </ul>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue2-filters/dist/vue2-filters.min.js"></script>
+    
+    <script>
+        
+        let app = new Vue({
+            el: '#directives',
+            data:{
+                message: 'VueJS é demais!!!',
+                eventname: 'click',
+                persons: ['Anthony Rafael', 'João Rangel', 'Glaucio Daniel', 'Ronaldo Braz', 'Marcus Ribeiro', 'Djalma Sindeaux'],
+                personsFiltred: [],
+            },
+            methods:{
+                reverseMessage(){
+                    this.message = this.message.split('').reverse().join('')
+                },
+                filterPersons(){
+                    this.personsFiltred = this.persons.filter(name => {
+                        return name.toUpperCase().includes(event.target.value.toUpperCase())
+                    })
+                }
+            },
+            created() {
+                this.personsFiltred = this.persons
+            },
+        })
+
+    </script>
+
+</body>
+</html>

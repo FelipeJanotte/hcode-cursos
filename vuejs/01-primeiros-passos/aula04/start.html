@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue.Js - Primeiro Exemplor</title>
+  </head>
+  <body>
+    <div id="start">
+        <h1>{{ message }}</h1>
+    </div>
+
+    
+    <!--<script src="./vue.js"></script> -> aula01-->
+    <!--<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script> -> aula02-->
+    <!-- aula03 - instalado por NPM-->
+    <!-- aula04 - instalado por YARN-->
+    <script src="../../node_modules/vue/dist/vue.min.js"></script>
+
+    <script>
+        let app = new Vue({
+            el: '#start',
+            data: {
+                message: 'Hello World. Estou usando Vue!'
+            }
+        })
+    </script>
+
+  </body>
+</html>

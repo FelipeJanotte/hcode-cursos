@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+    <title>Diretivas: v-cloak</title>
+</head>
+<body>
+
+    <!--AULA 13-->
+
+    <div id="directives">
+        <h4 v-cloak>{{ name }}</h4>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue2-filters/dist/vue2-filters.min.js"></script>
+    
+    <script>
+
+        setTimeout(() =>{
+            let app = new Vue({
+            el: '#directives',
+            data:{
+                name: 'Han Solo'
+            },
+            })
+        },1500)
+        
+
+    </script>
+
+</body>
+</html>
