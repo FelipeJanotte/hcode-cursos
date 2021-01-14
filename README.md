@@ -9,7 +9,7 @@
 
 ## 📁 Diretórios
 
-* [VueJs](./vuejs)
+* [<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vuejs/vuejs-original.svg" width="16">  VueJs](./vuejs)
 
 ---
 
