@@ -17,15 +17,13 @@
 
   Desenvolvido por Felipe Augusto Janotte
 
-  <p  style="display:flex;justify-content:space-around;" >
-    <a href="https://linkedin.com/in/felipe-augusto-janotte-662626195/" style>
-      <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linkedin/linkedin-original.svg" width="20"><br>
+  <a href="https://linkedin.com/in/felipe-augusto-janotte-662626195/" style>
+    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linkedin/linkedin-original.svg" width="20">
       LinkedIn
-    </a>
-    <a href="https://github.com/FelipeJanotte">
-      <img src="https://github.githubassets.com/images/icons/emoji/octocat.png" width="20"><br>
+  </a><br>
+  <a href="https://github.com/FelipeJanotte">
+    <img src="https://github.githubassets.com/images/icons/emoji/octocat.png" width="20">
       Github
-    </a>
-  </p>
+  </a>
 
 </h3>
